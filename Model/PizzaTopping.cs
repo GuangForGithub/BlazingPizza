@@ -1,6 +1,9 @@
-﻿namespace BlazingPizza
+﻿using Microsoft.EntityFrameworkCore;
+
+namespace BlazingPizza
 {
-    public class PizzaTopping
+	[Keyless]
+	public class PizzaTopping
     {
         public Topping Topping { get; set; }
 

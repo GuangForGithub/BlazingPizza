@@ -1,4 +1,5 @@
 using BlazingPizza.Data;
+using BlazingPizza.Services;
 using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -19,6 +20,7 @@ builder.Services.AddServerSideBlazor();
 
 //Ìí¼Ó·þÎñ
 builder.Services.AddScoped<PizzaService>();
+builder.Services.AddScoped<OrderState>();
 
 var app = builder.Build();
 
@@ -41,14 +43,16 @@ var scopeFactory = app.Services.GetRequiredService<IServiceScopeFactory>();
 using (var scope = scopeFactory.CreateScope())
 {
 	var psdb = scope.ServiceProvider.GetRequiredService<PizzaStoreContext>();
-	if (psdb.Database.EnsureCreated())
+	//if (psdb.Database.EnsureCreated())
+	//{
+	//	SeedData.InitializePizzaSpecial(psdb);
+	//}
+	bool dbFlag = psdb.Database.EnsureCreated();
+	if((!dbFlag)&&(!psdb.Specials.Any())&&(!(psdb.Pizzas.Any())))
 	{
 		SeedData.InitializePizzaSpecial(psdb);
-		//if (!psdb.Pizzas.Any())
-		//{
-		//    SeedData.InitializePizza(psdb);
-		//}
 	}
+
 }
 
 app.Run();

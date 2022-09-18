@@ -31,11 +31,13 @@ namespace BlazingPizza.Model
     public int OrderId { get; set; }
 
     public PizzaSpecial Special { get; set; }
-    //public int SpecialId { get; set; }
+    public int SpecialId { get; set; }
 
     public int Size { get; set; }
 
-    //public List<PizzaTopping> Toppings { get; set; }
+    [NotMapped] 
+    public List<PizzaTopping> Toppings { get; set; }
+    //public int ToppingId { get; set; } 
 
     public decimal GetBasePrice()
     {
