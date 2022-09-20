@@ -241,9 +241,11 @@ form {
     padding: 0 1.5rem;
 }
 
-.order-total.hidden {
-    transform: translate3d(0, 4rem, 0);
-}
+  .order-total.hidden {
+    /*transform: translate3d(0, -4rem, 0);*/
+    /*visibility:hidden;*/
+    opacity:0.2;
+  }
 
     .order-total .total-price {
         font-weight: 700;

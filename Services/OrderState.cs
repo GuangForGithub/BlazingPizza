@@ -12,10 +12,12 @@ public class OrderState
 	{
 		ConfiguringPizza = new Pizza()
 		{
+			Name = special.Name,
+			Description=special.Description,
+			Price=special.BasePrice,
 			Special = special,
 			SpecialId = special.Id,
 			Size = Pizza.DefaultSize,
-			//Toppings = new List<PizzaTopping>(),
 		};
 
 		ShowingConfigureDialog = true;
@@ -40,4 +42,6 @@ public class OrderState
 	{
 		Order.Pizzas.Remove(pizza);
 	}
+
+
 }
